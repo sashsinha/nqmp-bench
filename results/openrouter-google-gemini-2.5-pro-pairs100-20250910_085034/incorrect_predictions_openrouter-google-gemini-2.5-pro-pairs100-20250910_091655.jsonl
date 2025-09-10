@@ -1,0 +1,2 @@
+{"pair_id": "pair_0038", "item_id": "59e2287e79c5320e", "operator": "unless/or", "domain": "inventory", "question": "List ids that are red unless they are round.", "prediction": "U2,U4,U7", "gold": "", "answer_type": "id_list", "correct": false}
+{"pair_id": "pair_0084", "item_id": "9e18455c9958a970", "operator": "unless/or", "domain": "inventory", "question": "List ids that are red unless they are round.", "prediction": "U3,U5,U6", "gold": "", "answer_type": "id_list", "correct": false}

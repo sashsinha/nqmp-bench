@@ -1,0 +1,8 @@
+{
+  "client": "openrouter",
+  "model": "google/gemini-2.5-pro",
+  "pairs": 100,
+  "seed": 42,
+  "timestamp": "20250910_091655",
+  "resumed": false
+}
