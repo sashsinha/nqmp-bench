@@ -1,0 +1,51 @@
+{
+  "item_accuracy": 0.87,
+  "pair_joint_accuracy": 0.77,
+  "by_operator": {
+    "xor/or": {
+      "item_accuracy": 0.625
+    },
+    "exactly1/atleast1": {
+      "item_accuracy": 1.0
+    },
+    "even/odd": {
+      "item_accuracy": 0.6666666666666666
+    },
+    "negation": {
+      "item_accuracy": 1.0
+    },
+    "none/notall": {
+      "item_accuracy": 1.0
+    },
+    "any/all_subset": {
+      "item_accuracy": 0.8333333333333334
+    },
+    "unless/or": {
+      "item_accuracy": 0.8333333333333334
+    },
+    "and/or": {
+      "item_accuracy": 0.75
+    },
+    "exactly/atleast": {
+      "item_accuracy": 0.8125
+    },
+    "atleast/atmost": {
+      "item_accuracy": 0.9285714285714286
+    },
+    "any/all": {
+      "item_accuracy": 1.0
+    },
+    "more/atleast_as_many": {
+      "item_accuracy": 0.9285714285714286
+    },
+    "range_inclusive/exclusive": {
+      "item_accuracy": 0.8
+    },
+    "demorgan_and/or": {
+      "item_accuracy": 0.5833333333333334
+    },
+    "majority/half": {
+      "item_accuracy": 1.0
+    }
+  }
+}
