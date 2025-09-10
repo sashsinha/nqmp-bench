@@ -1,0 +1,8 @@
+{
+  "client": "echo",
+  "model": "echo",
+  "pairs": 100,
+  "seed": 42,
+  "timestamp": "20250910_082714",
+  "resumed": false
+}
