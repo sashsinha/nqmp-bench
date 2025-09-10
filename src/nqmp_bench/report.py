@@ -78,7 +78,16 @@ def _update_leaderboard_readme(
   try:
     if csv_path.exists():
       existing = pd.read_csv(csv_path)
-      df = pd.concat([existing, pd.DataFrame([row])], ignore_index=True)
+      new_row_df = pd.DataFrame([row])
+      # Align columns to avoid FutureWarning on concat with missing/all-NA cols
+      missing_in_new = [c for c in existing.columns if c not in new_row_df.columns]
+      for c in missing_in_new:
+        new_row_df[c] = pd.NA
+      missing_in_existing = [c for c in new_row_df.columns if c not in existing.columns]
+      for c in missing_in_existing:
+        existing[c] = pd.NA
+      # Now columns match; safe concat
+      df = pd.concat([existing, new_row_df], ignore_index=True)
     else:
       df = pd.DataFrame([row])
     # Order columns: primary metrics first, helpers after

@@ -1,0 +1,8 @@
+{
+  "client": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "pairs": 100,
+  "seed": 42,
+  "timestamp": "20250910_083514",
+  "resumed": false
+}

@@ -8,6 +8,7 @@ poses **minimal pairs** of questions, queries an LLM, and grades for **pairwise 
 - [NQMP — Negation \& Quantifier Minimal Pairs](#nqmp--negation--quantifier-minimal-pairs)
   - [Table of Contents](#table-of-contents)
   - [Why NQMP?](#why-nqmp)
+  - [Leaderboard](#leaderboard)
   - [Requirements](#requirements)
   - [Install](#install)
   - [Configure](#configure)
@@ -16,7 +17,6 @@ poses **minimal pairs** of questions, queries an LLM, and grades for **pairwise 
   - [CLI](#cli)
   - [Resuming Runs](#resuming-runs)
   - [Retry Behavior](#retry-behavior)
-  - [Leaderboard](#leaderboard)
   - [Development](#development)
     - [Project Layout](#project-layout)
   - [License](#license)
@@ -25,6 +25,19 @@ poses **minimal pairs** of questions, queries an LLM, and grades for **pairwise 
 - Targets a common failure mode: models read the words but miss the **operator change**.
 - Minimal setup: small synthetic contexts; exact-match grading; transparent artifacts.
 - Reproducible: seedable generation, strict prompts, and self-contained evaluation.
+
+## Leaderboard
+The leaderboard below updates automatically when you generate reports.
+It sorts by **pair joint accuracy** (both items in a pair must be correct), then item accuracy.
+
+<!-- LEADERBOARD:START -->
+
+|       timestamp | client     | model              |   pairs |   seed |   item_accuracy |   pair_joint_accuracy | report                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | run_dir                                                        |
+|-----------------|------------|--------------------|---------|--------|-----------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| 20250910_083514 | openrouter | openai/gpt-4o-mini |     100 |     42 |           0.775 |                 0.640 | [md](https://github.com/sashsinha/nqmp-bench/blob/main/results/openrouter-openai-gpt-4o-mini-pairs100-20250910_083236/report_openrouter-openai-gpt-4o-mini-pairs100-20250910_083514.md) · [html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/sashsinha/nqmp-bench/main/results/openrouter-openai-gpt-4o-mini-pairs100-20250910_083236/report_openrouter-openai-gpt-4o-mini-pairs100-20250910_083514.html) · [chart](https://github.com/sashsinha/nqmp-bench/blob/main/results/openrouter-openai-gpt-4o-mini-pairs100-20250910_083236/operator_accuracy_openrouter-openai-gpt-4o-mini-pairs100-20250910_083514.png) · [dir](https://github.com/sashsinha/nqmp-bench/tree/main/results/openrouter-openai-gpt-4o-mini-pairs100-20250910_083236) | results/openrouter-openai-gpt-4o-mini-pairs100-20250910_083236 |
+| 20250910_082714 | echo       | echo               |     100 |     42 |           0.360 |                 0.160 | [md](https://github.com/sashsinha/nqmp-bench/blob/main/results/echo-unknown-pairs100-20250910_082714/report_echo-unknown-pairs100-20250910_082714.md) · [html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/sashsinha/nqmp-bench/main/results/echo-unknown-pairs100-20250910_082714/report_echo-unknown-pairs100-20250910_082714.html) · [chart](https://github.com/sashsinha/nqmp-bench/blob/main/results/echo-unknown-pairs100-20250910_082714/operator_accuracy_echo-unknown-pairs100-20250910_082714.png) · [dir](https://github.com/sashsinha/nqmp-bench/tree/main/results/echo-unknown-pairs100-20250910_082714)                                                                                                                        | results/echo-unknown-pairs100-20250910_082714                  |
+
+<!-- LEADERBOARD:END -->
 
 ## Requirements
 - Python 3.10+
@@ -110,18 +123,6 @@ uv run nqmp all --pairs 100 --client openrouter --model openai/gpt-5-nano --out 
 
 ## Retry Behavior
 The OpenRouter client retries on transient statuses 408/409/425/429/5xx with exponential backoff (base 0.8, cap 8s, up to 4 retries). If an item still fails, the harness logs an `llm_error` and continues to the next item.
-
-## Leaderboard
-The leaderboard below updates automatically when you generate reports.
-It sorts by **pair joint accuracy** (both items in a pair must be correct), then item accuracy.
-
-<!-- LEADERBOARD:START -->
-
-|       timestamp | client   | model   |   pairs |   seed |   item_accuracy |   pair_joint_accuracy | report                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | run_dir                                       |
-|-----------------|----------|---------|---------|--------|-----------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| 20250910_082714 | echo     | echo    |     100 |     42 |           0.360 |                 0.160 | [md](https://github.com/sashsinha/nqmp-bench/blob/main/results/echo-unknown-pairs100-20250910_082714/report_echo-unknown-pairs100-20250910_082714.md) · [html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/sashsinha/nqmp-bench/main/results/echo-unknown-pairs100-20250910_082714/report_echo-unknown-pairs100-20250910_082714.html) · [chart](https://github.com/sashsinha/nqmp-bench/blob/main/results/echo-unknown-pairs100-20250910_082714/operator_accuracy_echo-unknown-pairs100-20250910_082714.png) · [dir](https://github.com/sashsinha/nqmp-bench/tree/main/results/echo-unknown-pairs100-20250910_082714) | results/echo-unknown-pairs100-20250910_082714 |
-
-<!-- LEADERBOARD:END -->
 
 ## Development
 - Dependencies: `requests`, `python-dotenv`, `pandas`, `matplotlib`, `tabulate`, `ruff`.
